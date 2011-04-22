@@ -1,0 +1,62 @@
+/* 
+Title:		IE patches
+Author: 	richie@wingtipmarketing.com
+*/
+
+* html .messaging {
+	width: 100%;
+	margin: 0 5%; 
+	padding: 0 5% 5px; 
+}
+
+/* nav fix */
+
+*:first-child+html #nav li {
+	width: 24.9%;
+	}
+	
+/* swapper disable */
+
+* html img.state2 { /* IE6 */
+	display: none;
+	}
+*:first-child+html img.state2 { /* IE7 */
+	display: none;
+	}
+
+/* self-clear floats */
+
+* html .group { /* IE6 */
+	height: 1%;
+	}
+*:first-child+html .group { /* IE7 */
+	min-height: 1px;
+	}
+
+/* PNG fix */
+
+/*
+* html #selector { 
+	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=scale src='img/image.png'); background-image: none; background-repeat: no-repeat; background-color: transparent;
+	}
+*/
+
+* html img,
+
+* html .png{
+
+    position:relative;
+
+    behavior: expression((this.runtimeStyle.behavior="none")&&(this.pngSet?this.pngSet=true:(this.nodeName == "IMG" && this.src.toLowerCase().indexOf('.png')>-1?(this.runtimeStyle.backgroundImage = "none",
+
+        this.runtimeStyle.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + this.src + "', sizingMethod='image')",
+
+        this.src = "images/transparent.gif"):(this.origBg = this.origBg? this.origBg :this.currentStyle.backgroundImage.toString().replace('url("','').replace('")',''),
+
+        this.runtimeStyle.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + this.origBg + "', sizingMethod='crop')",
+
+        this.runtimeStyle.backgroundImage = "none")),this.pngSet=true)
+
+    );
+
+}

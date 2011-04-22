@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Cross-browser kerning-pairs & ligatures</title>
+    <style>
+      body { font-family: sans-serif; background: rgba(30, 10, 0, 0.05); color: rgba(40, 30, 0, 1); width: 500px; margin: 80px auto; padding: 0px; }
+      a { color: rgba(15, 10, 0, 0.8); text-decoration: none; border-bottom: 1px solid; padding: 1px; -webkit-transition: background 1s ease; }
+      a:hover { background: rgba(0, 220, 220, 0.2); }
+      p { line-height: 1.5; padding: 0px 1em 0em 0em; }
+      code { background: rgba(0, 220, 220, 0.2); padding: 2px 4px; }
+      small { font-size: 0.9em; }
+      hr { background: none; border-top: 1px dotted rgba(40, 30, 0, 0.85); margin: 20px 0px; }
+      
+      h2 { font-size: 5em; margin: 0px; position: relative; }
+      h2.bask { font-family: 'baskerville', times; font-style: italic; font-weight: normal; }
+      h2.georg { font-family: Palintina, Georgia, serif; font-style: none; color: #9d4149; font-size: 72; margin-bottom: 0; font-style: italic; font-weight: 500; letter-spacing: -2px; text-rendering: optimizeLegibility; }
+
+      h2:before { content: 'Normal'; font-family: sans-serif; font-style: normal; font-size: 11px; padding: 2px 5px 1px; background: rgba(25, 20, 0, 0.15); color: rgba(25, 20, 0, 0.6); position: absolute; left: -5.4em; top: 3.5em; font-weight: normal; -webkit-border-radius: 4px; -moz-border-radius: 4px; border-radius: 4px; }
+      /*************
+        The Magic
+      **************/
+      h2.kern { text-rendering: optimizeLegibility; }
+      /*************
+      **************/
+      h2.kern:before { content: 'optimizeLegibility'; left: -9.6em; }
+    </style>
+  </head>
+  <h1>Cross-browser kerning-pairs &&nbsp;ligatures</h1>
+  <p>Improved handling of kerning pairs and ligatures in modern browsers using the <code>text-rendering: optimizeLegibility;</code> declaration.</p>
+  <p>The declaration is currently supported by:<br>
+    <a href="http://www.apple.com/safari/">Safari</a>, The&nbsp;<a href="http://nightly.webkit.org/">Webkit&nbsp;Nightlies</a> & <a href="http://www.google.com/chrome">Chrome</a>.<br>
+    <a href="http://www.mozilla.com/firefox/">Firefox</a> already uses <code>optimizeLegibility</code> by default.</p>
+  <hr>
+  <h2>AVAST</h2>
+  <h2 class="kern">AVAST</h2>
+  <hr>
+  <h2>LOVELY</h2>
+  <h2 class="kern">LOVELY</h2>
+  <hr>
+  <h2>True Type</h2>
+  <h2 class="kern">True Type</h2>
+  <hr>
+  <h2>Youth</h2>
+  <h2 class="kern">Youth</h2>
+  <hr>
+  <h2 class="bask">traffic</h2>
+  <h2 class="bask kern">traffic</h2>
+  <hr>
+  <h2 class="bask">floret</h2>
+  <h2 class="bask kern">floret</h2>
+  <hr>
+  <h2 class="georg" >It&#8217;s aliveee! fl</h2>
+  <h2 class="georg kern">It&#8217;s aliveee! fl</h2>
+  <small>Gist: <a href="http://gist.github.com/452577">http://gist.github.com/452577</a></small>
+
+</html>
