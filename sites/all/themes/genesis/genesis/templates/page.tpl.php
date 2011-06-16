@@ -1,6 +1,4 @@
 <?php
-// $Id: page.tpl.php,v 1.13 2011/01/14 03:34:24 jmburnz Exp $
-
 /**
  * @file
  * Default theme implementation to display a single Drupal page.
@@ -68,60 +66,60 @@
  * @see template_process()
  */
 ?>
-  <div id="messaging">
+  <?php if ($leaderboard = render($page['leaderboard'])): ?>
+    <div id="leaderboard" class="clearfix">
+      <?php print $leaderboard; ?>
+    </div>
+  <?php endif; ?>
 
-  <?php if (!$in_overlay): // hide in overlay ?>
+  <?php if ($secondary_menu_links): ?>
+    <nav id="secondary-menu-wrapper" class="clearfix" role="navigation">
+      <div class="secondary-menu-inner"><?php print $secondary_menu_links; ?></div>
+    </nav>
+  <?php endif; ?>
 
-    <?php if ($page['leaderboard']): ?>
-      <div id="leaderboard" class="clearfix">
-        <?php print render($page['leaderboard']); ?>
-      </div>
-    <?php endif; ?>
+  <header id="header" class="clearfix" role="banner">
 
+     <?php if ($linked_site_logo || $site_name || $site_slogan): ?>
+      <div id="branding">
 
-    <div id="header" class="clearfix">
+         <?php if ($linked_site_logo): ?>
+          <div id="logo"><?php print $linked_site_logo; ?></div>
+        <?php endif; ?>
 
-      <?php if ($site_name || $site_slogan): ?>
-
-          <?php if ($site_name): ?>
-            <?php if ($title): ?>
-              <div class="logo-site-name">
-                <?php if ($site_name): ?><?php print $site_name; ?><?php endif; ?>
-              </div>
-            <?php else: /* Use h1 when the content title is empty */ ?>
-              <h1 class="logo-site-name">
-                <?php if ($site_name): ?><?php print $site_name; ?><?php endif; ?>
-             </h1>
+        <?php if ($site_name || $site_slogan): ?>
+          <hgroup<?php if (!$site_slogan && $hide_site_name): ?> class="<?php print $visibility; ?>"<?php endif; ?>>
+            <?php if ($site_name): ?>
+              <h1 id="site-name"<?php if ($hide_site_name): ?> class="<?php print $visibility; ?>"<?php endif; ?>><?php print $site_name; ?></h1>
             <?php endif; ?>
-          <?php endif; ?>
+            <?php if ($site_slogan): ?>
+              <h2 id="site-slogan"><?php print $site_slogan; ?></h2>
+            <?php endif; ?>
+          </hgroup>
+        <?php endif; ?>
 
-          <?php if ($site_slogan): ?>
-            <div id="site-slogan"><?php print $site_slogan; ?></div>
-          <?php endif; ?>
-
-      <?php endif; ?>
-
-      <?php if ($page['header']): ?>
-        <div id="header-blocks"><?php print render($page['header']); ?></div>
-      <?php endif; ?>
-
-    </div> <!-- /header -->
-
-
-
-  <?php endif; // end hide in overlay ?>
-    <?php if ($secondary_menu_links): ?>
-      <nav id="secondary-menu-wrapper" class="clearfix">
-        <div class="secondary-menu-inner"><?php print $secondary_menu_links; ?></div>
-      </nav>
+      </div> <!-- /branding -->
     <?php endif; ?>
+
+    <?php if ($header_blocks = render($page['header'])): ?>
+      <div id="header-blocks"><?php print $header_blocks; ?></div>
+    <?php endif; ?>
+
+  </header> <!-- /header -->
+
+  <?php if ($main_menu_links): ?>
+    <nav id="main-menu-wrapper" class="clearfix" role="navigation">
+      <div class="main-menu-inner"><?php print $main_menu_links; ?></div>
+    </nav>
+  <?php endif; ?>
+
   <?php print $breadcrumb; ?>
   <?php print $messages; ?>
-  <?php print render($page['help']); ?>
+  <?php if ($help = render($page['help'])): print $help; endif; ?>
 
-  <?php if ($page['secondary_content'] && !$in_overlay): // hide in overlay ?>
+  <?php if ($secondary_content = render($page['secondary_content'])): ?>
     <div id="secondary-content">
-      <?php print render($page['secondary_content']); ?>
+      <?php print $secondary_content; ?>
     </div>
   <?php endif; ?>
 
@@ -129,58 +127,52 @@
     <div id="content-column">
       <div class="content-inner">
 
-        <?php if ($page['highlighted']): ?>
-          <div id="highlighted"><?php print render($page['highlighted']); ?></div>
+        <?php if ($highlighted = render($page['highlighted'])): ?>
+          <div id="highlighted"><?php print $highlighted; ?></div>
         <?php endif; ?>
 
-        <div id="main-content">
+        <div id="main-content" role="main">
           <?php print render($title_prefix); ?>
           <?php if ($title): ?>
             <h1 id="page-title"><?php print $title; ?></h1>
           <?php endif; ?>
           <?php print render($title_suffix); ?>
 
-          <?php if ($tabs): ?>
-            <div class="local-tasks"><?php print render($tabs); ?></div>
+          <?php if ($tabs = render($tabs)): ?>
+            <div class="local-tasks"><?php print $tabs; ?></div>
           <?php endif; ?>
 
-          <?php if ($action_links): ?>
-            <ul class="action-links"><?php print render($action_links); ?></ul>
+          <?php if ($action_links = render($action_links)): ?>
+            <ul class="action-links"><?php print $action_links; ?></ul>
           <?php endif; ?>
 
           <div id="content">
             <?php print render($page['content']); ?>
+            <?php print $feed_icons; ?>
           </div>
         </div>
 
       </div>
     </div>
 
-    <?php if ($page['sidebar_first']): ?>
-      <aside id="sidebar-first" class="sidebar"><?php print render($page['sidebar_first']); ?></aside>
+    <?php if ($sidebar_first = render($page['sidebar_first'])): ?>
+      <div id="sidebar-first" class="sidebar"><?php print $sidebar_first; ?></div>
     <?php endif; ?>
 
-    <?php if ($page['sidebar_second']): ?>
-      <aside id="sidebar-second" class="sidebar"><?php print render($page['sidebar_second']); ?></aside>
+    <?php if ($sidebar_second = render($page['sidebar_second'])): ?>
+      <div id="sidebar-second" class="sidebar"><?php print $sidebar_second; ?></div>
     <?php endif; ?>
 
   </div> <!-- /columns -->
 
-  <?php if (!$in_overlay): // hide in overlay ?>
+  <?php if ($tertiary_content = render($page['tertiary_content'])): ?>
+    <div id="tertiary-content">
+      <?php print $tertiary_content; ?>
+    </div>
+  <?php endif; ?>
 
-    <?php if ($page['tertiary_content']): ?>
-      <div id="tertiary-content">
-        <?php print render($page['tertiary_content']); ?>
-      </div>
-    <?php endif; ?>
-
-    <?php if ($page['footer'] || $feed_icons): ?>
-	    <footer id="footer"><a class="button" href="tel:347.635.4373" style="text-decoration: none;">Call <span class="desktop">347.635.4373</span></a><br>
-	        <a class="button" href="http://maps.google.com/maps?f=q&source=s_q&hl=en&geocode=&q=Wingtip+Marketing,+217+Water+Street,+New+York,+NY+10038&aq=&sll=40.707542,-74.003282&sspn=0.009255,0.014226&g=217+Water+Street,+New+York,+NY+10038&ie=UTF8&hq=Wingtip+Marketing,&hnear=217+Water+St,+New+York,+10038&ll=40.707542,-74.003282&spn=0.009255,0.014226&z=17" style="text-decoration: none;">Visit <span class="desktop">217 Water Street, Suite 301. New York, NY 10038</span></a><?php print render($page['footer']); ?>
-        <?php print $feed_icons; ?>
-	    </footer>
-
-    <?php endif; ?>
-
-  <?php endif; // end hide in overlay ?>
- </div>
+  <?php if ($page_footer = render($page['footer'])): ?>
+    <footer id="footer" role="contentinfo">
+      <?php print $page_footer; ?>
+    </footer>
+  <?php endif; ?>

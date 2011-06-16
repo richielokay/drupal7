@@ -1,5 +1,4 @@
 <?php
-// $Id: 2col-66-33.php,v 1.2 2010/06/24 23:08:18 jmburnz Exp $
 
 /**
  * @file 2col-66-33.php

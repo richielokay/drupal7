@@ -1,4 +1,3 @@
-/* $Id: nodes.css,v 1.4 2010/06/24 23:08:18 jmburnz Exp $ */
 
 /**********************************************************
  *                      Nodes
@@ -29,9 +28,9 @@
 }
 
 /* Submitted */
-.node-submitted {}
-.node-submitted span {}
-.node-submitted a    {}
+.node .submitted {}
+.node .submitted span {}
+.node .submitted a    {}
 
 /* Node content wrapper */
 .node-content {}

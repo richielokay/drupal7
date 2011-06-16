@@ -1,6 +1,4 @@
 <?php
-// $Id: field.tpl.php,v 1.4 2011/01/14 03:34:24 jmburnz Exp $
-
 /**
  * @file field.tpl.php
  * Default template implementation to display the value of a field.

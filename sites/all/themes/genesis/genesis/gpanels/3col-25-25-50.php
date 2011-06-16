@@ -1,5 +1,4 @@
 <?php
-// $Id: 3col-25-25-50.php,v 1.2 2010/06/24 23:08:18 jmburnz Exp $
 
 /**
  * @file 3col-25-25-50.php

@@ -1,5 +1,4 @@
 <?php
-// $Id: template.php,v 1.10 2011/01/14 02:57:57 jmburnz Exp $
 
 /**
  * Preprocess and Process Functions SEE: http://drupal.org/node/254940#variables-processor

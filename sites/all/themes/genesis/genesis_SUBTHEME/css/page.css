@@ -1,4 +1,3 @@
-/* $Id: page.css,v 1.13 2011/01/14 03:12:40 jmburnz Exp $ */
 
 /**********************************************************
  *                    Body Classes
@@ -55,26 +54,13 @@ body {
   float: left; /* LTR */
 }
 
-/* h1 is for the front page only, all others use the div. */
-#branding h1 {
-  font-size: 1em; /* reset h1, do not change! */
-} 
-
 /* Logo and site_name wrapper. */
-.logo-site-name {}
-div.logo-site-name,
-h1.logo-site-name  {}
-
-/* Remove display:block if you want the site name inline with the logo. */
-.logo-site-name span {
-  display: block;
-}
+hgroup {}
 
 /* Logo. */
 #logo {}
 
 #site-name {
-  font-weight: bold; /* Bold or else the line heights vary. */
   font-size: 2em;
   line-height: 1.5;
 }

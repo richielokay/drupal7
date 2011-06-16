@@ -1,4 +1,3 @@
-/* $Id: layout.css,v 1.8 2011/01/14 03:12:40 jmburnz Exp $ */
 
 /* Standard 3 column, em based widths. */
 #genesis-1a .two-sidebars .content-inner{margin:0 22em;}
@@ -79,8 +78,11 @@
 
 /* Layout helpers. */
 #container{position:relative;margin:0 auto;}
-#columns{display:inline-block;}
+#columns{display:inline-block;margin-bottom:1em;}
 #container > #columns{display:block;}
 #content-column,#sidebar-first,#sidebar-second{float:left;}
-#content-column{width:100%;}
+#content-column{width:100%;margin-bottom:1em;}
 .clear,#main-menu-wrapper,#secondary-menu-wrapper,#columns,#breadcrumb,#secondary-content,#tertiary-content,#footer{clear:both;}
+
+/* Reset HTML5 elements, CSS assumes elements are inline. */
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section {display: block;}
